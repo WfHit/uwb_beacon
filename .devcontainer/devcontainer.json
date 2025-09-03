@@ -48,10 +48,5 @@
 		"LOCAL_USER_ID": "${localEnv:UID}"
 	},
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	"workspaceFolder": "/work_space",
-	"workspaceMount": "source=${localWorkspaceFolder},target=/work_space,type=bind,consistency=cached",
-	"postCreateCommand": "git config --global --add safe.directory /work_space"
+	"postCreateCommand": "git config --global --add safe.directory /workspaces/uwb_beacon"
 }
