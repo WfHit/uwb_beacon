@@ -1,0 +1,57 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.134.0/containers/cpp
+{
+	"name": "uwb-beacon-stm32",
+	"image": "ghcr.io/jasonyang-ee/stm32-builder:ubuntu-latest",
+
+	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined", "--privileged" ],
+
+	// Set *default* container specific settings.json values on container create.
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash"
+			},
+
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"dan-c-underwood.arm",
+				"jeff-hykin.better-cpp-syntax",
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-extension-pack",
+				"akiramiyakoda.cppincludeguard",
+				"xaver.clang-format",
+				"twxs.cmake",
+				"ms-vscode.cmake-tools",
+				"fredericbonnet.cmake-test-adapter",
+				"marus25.cortex-debug",
+				"ms-azuretools.vscode-docker",
+				"cschlosser.doxdocgen",
+				"mhutchie.git-graph",
+				"donjayamanne.githistory",
+				"eamodio.gitlens",
+				"zixuanwang.linkerscript",
+				"mcu-debug.memory-view",
+				"mcu-debug.rtos-views",
+				"mcu-debug.debug-tracker-vscode",
+				"streetsidesoftware.code-spell-checker",
+				"editorconfig.editorconfig",
+				"github.vscode-pull-request-github",
+				"redhat.vscode-yaml",
+				"ms-vscode.makefile-tools"
+			]
+		}
+	},
+
+	"containerUser": "user",
+	"containerEnv": {
+		"LOCAL_USER_ID": "${localEnv:UID}"
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	"workspaceFolder": "/work_space",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/work_space,type=bind,consistency=cached",
+	"postCreateCommand": "git config --global --add safe.directory /work_space"
+}
